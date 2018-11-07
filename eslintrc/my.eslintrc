@@ -1,0 +1,15 @@
+{
+    "rules": {
+        "no-console": "warn",
+        "no-unused-vars": "warn",
+        "no-new": "off",
+        "no-restricted-syntax": "off",
+        "indent": [
+            "warn",
+            4
+        ],
+        "no-await-in-loop": "off",
+        "no-underscore-dangle": "off",
+        "no-shadow": "off"
+    }
+}

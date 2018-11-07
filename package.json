@@ -1,0 +1,38 @@
+{
+  "name": "barcode-clarifier",
+  "version": "1.0.0",
+  "description": "",
+  "main": "./dist/index.html",
+  "scripts": {
+    "test": "parcel ./src/index.pug",
+    "build": "parcel build ./src/index.pug",
+    "watch": "parcel watch ./src/index.pug"
+  },
+  "author": "Zim",
+  "license": "MIT",
+  "devDependencies": {
+    "@babel/core": "^7.1.2",
+    "@babel/plugin-proposal-class-properties": "^7.1.0",
+    "@babel/plugin-proposal-function-bind": "^7.0.0",
+    "@babel/plugin-proposal-optional-chaining": "^7.0.0",
+    "@babel/plugin-transform-runtime": "^7.1.0",
+    "@babel/preset-env": "^7.1.0",
+    "@vue/component-compiler-utils": "^2.2.0",
+    "babel-eslint": "^10.0.1",
+    "eslint": "^5.7.0",
+    "eslint-config-airbnb-base": "^13.1.0",
+    "eslint-plugin-import": "^2.14.0",
+    "eslint-plugin-vue": "^5.0.0-beta.3",
+    "parcel-bundler": "^1.10.3",
+    "pug": "^2.0.3",
+    "vue-hot-reload-api": "^2.3.1",
+    "vue-template-compiler": "^2.5.17"
+  },
+  "dependencies": {
+    "@babel/runtime": "^7.1.2",
+    "element-ui": "^2.4.9",
+    "jsbarcode": "^3.11.0",
+    "quagga": "^0.12.1",
+    "vue": "^2.5.17"
+  }
+}
