@@ -11,7 +11,7 @@
   "author": "Zim",
   "license": "MIT",
   "devDependencies": {
-    "@babel/core": "^7.1.2",
+    "@babel/core": "^7.1.5",
     "@babel/plugin-proposal-class-properties": "^7.1.0",
     "@babel/plugin-proposal-function-bind": "^7.0.0",
     "@babel/plugin-proposal-optional-chaining": "^7.0.0",
@@ -29,7 +29,7 @@
     "vue-template-compiler": "^2.5.17"
   },
   "dependencies": {
-    "@babel/runtime": "^7.1.2",
+    "@babel/runtime": "^7.1.5",
     "element-ui": "^2.4.9",
     "jsbarcode": "^3.11.0",
     "quagga": "^0.12.1",
