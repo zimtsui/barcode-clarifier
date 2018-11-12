@@ -3,7 +3,6 @@ div
     cube-upload(
         multiple
         :auto="false"
-        accept="image/jpeg, image/png"
         v-model="files"
         :processFile="addBase64"
     )
@@ -28,7 +27,9 @@ export default {
             fileReader.readAsDataURL(file);
             fileReader.onload = () => {
                 file.base64 = fileReader.result;
-                next(file);
+                file.image = new Image();
+                file.image.src = file.base64;
+                file.image.onload = () => next(file);
             };
         },
         async parse() {
@@ -41,6 +42,10 @@ export default {
                         locate: false,
                         numOfWorkers: 0,
                         src: file.base64,
+                        // 如果不写size这个参数，解析png时有时会出奇怪的问题，可能是个bug吧。
+                        inputStream: {
+                            size: Math.max(file.file.image.width, file.file.image.hight),
+                        },
                     }, (result) => {
                         if (result.codeResult) {
                             resolve(result.codeResult.code);
