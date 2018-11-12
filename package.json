@@ -1,38 +1,45 @@
 {
   "name": "barcode-clarifier",
-  "version": "1.0.0",
-  "description": "",
-  "main": "./dist/index.html",
+  "version": "0.1.0",
+  "private": true,
   "scripts": {
-    "test": "parcel ./src/index.pug",
-    "build": "parcel build ./src/index.pug",
-    "watch": "parcel watch ./src/index.pug"
-  },
-  "author": "Zim",
-  "license": "MIT",
-  "devDependencies": {
-    "@babel/core": "^7.1.5",
-    "@babel/plugin-proposal-class-properties": "^7.1.0",
-    "@babel/plugin-proposal-function-bind": "^7.0.0",
-    "@babel/plugin-proposal-optional-chaining": "^7.0.0",
-    "@babel/plugin-transform-runtime": "^7.1.0",
-    "@babel/preset-env": "^7.1.0",
-    "@vue/component-compiler-utils": "^2.2.0",
-    "babel-eslint": "^10.0.1",
-    "eslint": "^5.7.0",
-    "eslint-config-airbnb-base": "^13.1.0",
-    "eslint-plugin-import": "^2.14.0",
-    "eslint-plugin-vue": "^5.0.0-beta.3",
-    "parcel-bundler": "^1.10.3",
-    "pug": "^2.0.3",
-    "vue-hot-reload-api": "^2.3.1",
-    "vue-template-compiler": "^2.5.17"
+    "serve": "vue-cli-service serve",
+    "build": "vue-cli-service build",
+    "lint": "vue-cli-service lint"
   },
   "dependencies": {
-    "@babel/runtime": "^7.1.5",
-    "element-ui": "^2.4.9",
+    "cube-ui": "~1.12.1",
     "jsbarcode": "^3.11.0",
     "quagga": "^0.12.1",
     "vue": "^2.5.17"
+  },
+  "devDependencies": {
+    "@babel/plugin-proposal-class-properties": "^7.1.0",
+    "@babel/plugin-proposal-function-bind": "^7.0.0",
+    "@babel/plugin-proposal-optional-chaining": "^7.0.0",
+    "@babel/plugin-proposal-pipeline-operator": "^7.0.0",
+    "@vue/cli-plugin-babel": "^3.1.1",
+    "@vue/cli-plugin-eslint": "^3.1.5",
+    "@vue/cli-service": "^3.1.4",
+    "@vue/eslint-config-airbnb": "^4.0.0",
+    "babel-eslint": "^10.0.1",
+    "eslint": "^5.8.0",
+    "eslint-plugin-vue": "^5.0.0-0",
+    "vue-cli-plugin-cube-ui": "^0.2.4",
+    "vue-cli-plugin-pug": "^1.0.7",
+    "vue-template-compiler": "^2.5.17"
+  },
+  "transformModules": {
+    "cube-ui": {
+      "transform": "cube-ui/lib/${member}",
+      "kebabCase": true,
+      "style": {
+        "ignore": [
+          "create-api",
+          "better-scroll",
+          "locale"
+        ]
+      }
+    }
   }
 }

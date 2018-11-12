@@ -1,6 +1,0 @@
-{
-    "plugins": ["vue"],
-    "extends":[
-        "plugin:vue/base"
-    ]
-}
