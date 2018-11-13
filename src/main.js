@@ -1,6 +1,6 @@
 import Vue from 'vue';
 import Cube from 'cube-ui';
-import App from './App.vue';
+import App from './components/index.vue';
 
 Vue.use(Cube);
 
