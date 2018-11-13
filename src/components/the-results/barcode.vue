@@ -1,15 +1,29 @@
 <template lang="pug">
-div(ref="theDiv")
+div.barcode-div
+    canvas.barcode-canvas(ref="theCanvas")
 </template>
 
 <script>
+import JsBarcode from 'jsbarcode';
 
 export default {
     props: [
-        'canvas',
+        'code',
     ],
     mounted() {
-        this.$refs.theDiv.appendChild(this.canvas);
+        JsBarcode(this.$refs.theCanvas, this.code, {
+            width: 16,
+            height: 800,
+            fontSize: 256,
+        });
     },
 };
 </script>
+
+<style lang="stylus">
+.barcode-div
+    margin 5px auto
+    width 95%
+.barcode-canvas
+    width 100%
+</style>

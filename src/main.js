@@ -6,8 +6,6 @@ Vue.use(Cube);
 
 Vue.config.productionTip = false;
 
-Cube.createAPI(Vue, Cube.ImagePreview, ['change']);
-
 new Vue({
     render: h => h(App),
 }).$mount('#app');
