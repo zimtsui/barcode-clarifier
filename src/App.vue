@@ -7,11 +7,17 @@ div
         :processFile="addBase64"
     )
     cube-button(@click="parse") 解析
-    barcode(v-for="code in codes" :code="code.value" :key="code.key")
+    barcode(
+        v-for="(code, index) in codes"
+        :code="code.value"
+        :key="code.key"
+        @click.native="showPreview(index)"
+    )
 </template>
 
 <script>
 import Quagga from 'quagga';
+import JsBarcode from 'jsbarcode';
 import Barcode from './components/Barcode.vue';
 
 export default {
@@ -19,9 +25,37 @@ export default {
         return {
             files: [],
             codes: [],
+            previewInitialIndex: 0,
         };
     },
+    computed: {
+        images() {
+            console.log('image computed');
+            return this.codes.map((code) => {
+                const canvas = document.createElement('canvas');
+                JsBarcode(canvas, code);
+                document.body.appendChild(canvas);
+                return canvas.toDataURL('image/png');
+            });
+        },
+    },
     methods: {
+        showPreview(index) {
+            this.previewInitialIndex = index;
+            this.$createImagePreview({
+                $props: {
+                    imgs: this.images,
+                    initialIndex: 'previewInitialIndex',
+                    loop: false,
+                },
+                $events: {
+                    // 绑定this
+                    change: (i) => {
+                        this.previewInitialIndex = i;
+                    },
+                },
+            }).show();
+        },
         addBase64(file, next) {
             const fileReader = new FileReader();
             fileReader.readAsDataURL(file);
@@ -33,6 +67,7 @@ export default {
             };
         },
         async parse() {
+            // Quagga.decodeSingle是有副作用的函数，只能一个一个运行。
             for (const file of this.files) {
                 file.code = await new Promise((resolve) => {
                     Quagga.decodeSingle({
