@@ -34,9 +34,9 @@ export default {
                         locate: false,
                         numOfWorkers: 0,
                         src: fileObject.base64,
-                        // 如果不写size这个参数，解析png时有时会出奇怪的问题，可能是个bug吧。
+                        // 如果不写size这个参数，解析png时有时会出奇怪的问题，写太大了还出错，可能是个bug吧。
                         inputStream: {
-                            size: Math.max(image.width, image.hight),
+                            size: 2000,
                         },
                     }, (result) => {
                         if (result.codeResult) {
