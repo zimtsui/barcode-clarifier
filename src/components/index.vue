@@ -26,6 +26,7 @@ export default {
                 image.src = fileObject.base64;
                 await new Promise((resolve) => { image.onload = resolve; });
                 const code = await new Promise((resolve) => {
+                    // quagga文档里根本没写怎么抛出错误，那就不管错误了。
                     Quagga.decodeSingle({
                         decoder: {
                             readers: ['code_128_reader'],
