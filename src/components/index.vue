@@ -1,5 +1,5 @@
 <template lang="pug">
-div
+div#root: div#main
     the-uploader(v-model="fileObjects")
     cube-button(@click="parse") 解析
     the-results(:codes="codes")
@@ -62,3 +62,10 @@ export default {
 };
 
 </script>
+
+<style lang="stylus">
+#root
+    overflow hidden
+#main
+    margin 20px
+</style>
