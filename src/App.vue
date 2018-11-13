@@ -12,6 +12,7 @@ div
         :code="code.value"
         :key="code.key"
         @click.native="showPreview(index)"
+        v-model="code.image"
     )
 </template>
 
@@ -30,29 +31,21 @@ export default {
     },
     computed: {
         images() {
-            console.log('image computed');
+            // return this.codes.map(code => code.image);
             return this.codes.map((code) => {
                 const canvas = document.createElement('canvas');
-                JsBarcode(canvas, code);
-                document.body.appendChild(canvas);
-                return canvas.toDataURL('image/png');
+                JsBarcode(canvas, code.value);
+                return canvas.toDataURL();
             });
         },
     },
     methods: {
         showPreview(index) {
-            this.previewInitialIndex = index;
             this.$createImagePreview({
                 $props: {
                     imgs: this.images,
-                    initialIndex: 'previewInitialIndex',
+                    initialIndex: index,
                     loop: false,
-                },
-                $events: {
-                    // 绑定this
-                    change: (i) => {
-                        this.previewInitialIndex = i;
-                    },
                 },
             }).show();
         },
@@ -94,6 +87,7 @@ export default {
             this.codes = this.files.map(file => ({
                 key: Symbol('unique'),
                 value: file.code,
+                image: null,
             }));
         },
     },
