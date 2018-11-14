@@ -7,8 +7,7 @@
 ## installation
 
 ```shell
-npm i
-npm run build
+npm i && npm run build
 ```
 
-thus, `dist/index.html` is the webapp entry.
+thus, `./dist/index.html` is the webapp entry.
