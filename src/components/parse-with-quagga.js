@@ -7,6 +7,7 @@ export default file => new Promise(
         maxWidth: 1024,
         maxHeight: 1024,
         quality: 1,
+        strict: false,
         success: resolve,
         error: reject,
     }),
