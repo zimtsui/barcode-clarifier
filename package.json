@@ -9,11 +9,12 @@
     "lint": "vue-cli-service lint"
   },
   "repository": {
-      "type": "git",
-      "url": "https://github.com/zimtsui/barcode-clarifier.git"
+    "type": "git",
+    "url": "https://github.com/zimtsui/barcode-clarifier.git"
   },
   "dependencies": {
     "@zxing/library": "^0.8.3",
+    "bluebird": "^3.5.3",
     "compressorjs": "^1.0.1",
     "cube-ui": "~1.12.1",
     "jsbarcode": "^3.11.0",

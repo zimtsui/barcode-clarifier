@@ -10,6 +10,7 @@ div#root: div#main
 </template>
 
 <script>
+import Promise from 'bluebird';
 import TheResults from './the-results/index.vue';
 import parseWithQuagga from './parse-with-quagga';
 import parseWithZxing from './parse-with-zxing';
@@ -29,11 +30,11 @@ export default {
                 files.push({
                     fileObject,
                     code: await Promise.reject()
-                        .catch(() => Promise.reject(fileObject.file))
+                        .catchThrow(fileObject.file)
                         .catch(parseWithZxing)
-                        .catch(() => Promise.reject(fileObject.file))
+                        .catchThrow(fileObject.file)
                         .catch(parseWithQuagga)
-                        .catch(() => null),
+                        .catchReturn(null),
                 });
             }
             const filteredFiles = files.filter(file => file.code !== null);
