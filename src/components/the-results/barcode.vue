@@ -1,5 +1,5 @@
 <template lang="pug">
-div.barcode-div
+div.barcode-div(:class="{ invisable: !show }")
     canvas.barcode-canvas(ref="theCanvas")
 </template>
 
@@ -9,6 +9,7 @@ import JsBarcode from 'jsbarcode';
 export default {
     props: [
         'code',
+        'show',
     ],
     mounted() {
         JsBarcode(this.$refs.theCanvas, this.code, {
@@ -26,4 +27,6 @@ export default {
     width 95%
 .barcode-canvas
     width 100%
+.invisable
+    visibility hidden
 </style>
